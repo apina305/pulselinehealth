@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PulseLine Health - Medical Coding & Billing Platform</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%); color: white; min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        header { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(148, 163, 184, 0.2); padding: 1.5rem 0; position: sticky; top: 0; z-index: 100; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo a { color: white; text-decoration: none; font-size: 1.8rem; font-weight: 700; }
+        .logo span { color: #94a3b8; }
+        nav ul { list-style: none; display: flex; gap: 1.5rem; }
+        nav a { color: white; text-decoration: none; padding: 0.5rem 1rem; border-radius: 8px; transition: 0.3s; }
+        nav a:hover { background: rgba(148, 163, 184, 0.1); }
+        .hero { padding: 4rem 0; text-align: center; }
+        .hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem; }
+        .hero p { color: #cbd5e1; font-size: 1.3rem; }
+        .platform-tabs { display: flex; gap: 1rem; justify-content: center; margin: 2rem 0; border-bottom: 2px solid rgba(148, 163, 184, 0.2); }
+        .platform-tab { padding: 1rem 2.5rem; cursor: pointer; border: none; background: transparent; color: #94a3b8; font-size: 1.1rem; font-weight: 600; transition: 0.3s; border-bottom: 3px solid transparent; }
+        .platform-tab.active { color: white; border-bottom-color: #60a5fa; }
+        .platform-content { display: none; padding: 2rem 0; }
+        .platform-content.active { display: block; }
+        .glass-panel { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 16px; padding: 2.5rem; margin: 2rem 0; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #e2e8f0; }
+        textarea, select { width: 100%; padding: 1rem; border: 1px solid rgba(148, 163, 184, 0.3); border-radius: 8px; background: rgba(15, 23, 42, 0.5); color: white; font-family: inherit; font-size: 1rem; }
+        textarea { min-height: 200px; resize: vertical; }
+        .btn { background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%); color: white; padding: 1.2rem 2.5rem; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 1.1rem; width: 100%; transition: 0.3s; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(96, 165, 250, 0.4); }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+        .loading { text-align: center; padding: 3rem; }
+        .spinner { border: 4px solid rgba(148, 163, 184, 0.2); border-top: 4px solid #60a5fa; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 0 auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .result-panel { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 12px; padding: 2rem; margin-top: 2rem; }
+        .code-item { background: rgba(30, 41, 59, 0.6); padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem; border-left: 4px solid #60a5fa; }
+        .code-number { color: #60a5fa; font-weight: 700; font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .billing-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid rgba(148, 163, 184, 0.2); }
+        .billing-tab { padding: 0.8rem 1.5rem; cursor: pointer; background: transparent; border: none; color: #94a3b8; font-weight: 600; transition: 0.3s; }
+        .billing-tab.active { color: white; border-bottom: 2px solid #60a5fa; margin-bottom: -2px; }
+        .billing-content { display: none; }
+        .billing-content.active { display: block; }
+        .denial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+        .denial-card { background: rgba(30, 41, 59, 0.5); padding: 1.5rem; border-radius: 10px; border: 1px solid rgba(148, 163, 184, 0.2); }
+        .denial-code { color: #60a5fa; font-weight: 700; font-size: 1.2rem; margin-bottom: 0.5rem; }
+        footer { background: rgba(30, 41, 59, 0.6); border-top: 1px solid rgba(148, 163, 184, 0.2); padding: 3rem 0; margin-top: 4rem; text-align: center; color: #94a3b8; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="/"><span>PulseLine</span> Health</a>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Medical Coding & Billing Platform</h1>
+            <p>AI-powered tools to streamline your practice</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="platform-tabs">
+                <button class="platform-tab active" onclick="switchPlatform('coding')">Medical Coding</button>
+                <button class="platform-tab" onclick="switchPlatform('billing')">Billing Assistant</button>
+            </div>
+
+            <!-- MEDICAL CODING TAB -->
+            <div id="coding-platform" class="platform-content active">
+                <div class="glass-panel">
+                    <h2 style="margin-bottom: 1.5rem; font-size: 2rem;">Medical Coding Platform</h2>
+                    <p style="color: #cbd5e1; margin-bottom: 2rem;">Generate accurate ICD-10, CPT, and HCPCS codes from clinical notes using AI.</p>
+                    
+                    <div class="form-group">
+                        <label>Clinical Notes</label>
+                    <div class="form-group">
+                        <label>📎 Upload Clinical Notes (Optional)</label>
+                        <input type="file" id="file-upload" accept=".txt,.pdf,.doc,.docx" onchange="handleFileUpload(event)" style="width: 100%; padding: 0.75rem; border: 2px dashed rgba(148, 163, 184, 0.3); border-radius: 8px; background: rgba(30, 41, 59, 0.3); color: white; cursor: pointer;">
+                        <p id="file-name" style="margin-top: 0.5rem; color: #60a5fa; font-size: 0.9rem;"></p>
+                    </div>
+
+                        <textarea id="medical-notes" placeholder="Enter patient clinical notes, diagnosis, procedures, etc.
+
+Example:
+Patient presents with acute bronchitis.
+Productive cough for 5 days with wheezing.
+Started on albuterol and azithromycin."></textarea>
+                    </div>
+
+                    <button class="btn" onclick="generateCodes()" id="coding-btn">Generate Medical Codes</button>
+
+                    <div id="coding-results"></div>
+                </div>
+            </div>
+
+            <!-- BILLING ASSISTANT TAB -->
+            <div id="billing-platform" class="platform-content">
+                <div class="glass-panel">
+                    <h2 style="margin-bottom: 1.5rem; font-size: 2rem;">Medical Billing Assistant</h2>
+                    
+                    <div class="billing-tabs">
+                        <button class="billing-tab active" onclick="switchBillingTab('analysis')">Claim Analysis</button>
+                        <button class="billing-tab" onclick="switchBillingTab('denials')">Denial Reference</button>
+                        <button class="billing-tab" onclick="switchBillingTab('appeals')">Appeal Generator</button>
+                    </div>
+
+                    <!-- Claim Analysis -->
+                    <div id="analysis-content" class="billing-content active">
+                        <p style="color: #cbd5e1; margin-bottom: 1.5rem;">Analyze claim data for potential denial risks.</p>
+                        <div class="form-group">
+                            <label>Claim Data</label>
+                            <textarea id="claim-data" rows="8" placeholder="Enter claim details (CPT codes, ICD-10, dates, amounts, insurance info)"></textarea>
+                        </div>
+                        <button class="btn" onclick="analyzeClaim()" id="analyze-btn">Analyze Claim</button>
+                        <div id="analysis-results"></div>
+                    </div>
+
+                    <!-- Denial Reference -->
+                    <div id="denials-content" class="billing-content">
+                        <h3 style="margin-bottom: 1rem;">Common 2026 Denial Codes</h3>
+                        <div class="denial-grid">
+                            <div class="denial-card">
+                                <div class="denial-code">CO-16</div>
+                                <p style="margin: 0.5rem 0; color: #e2e8f0;">Missing/incorrect information</p>
+                                <p style="font-size: 0.9rem; color: #94a3b8;">Solution: Ensure all fields are complete</p>
+                            </div>
+                            <div class="denial-card">
+                                <div class="denial-code">CO-167</div>
+                                <p style="margin: 0.5rem 0; color: #e2e8f0;">Medical necessity not supported</p>
+                                <p style="font-size: 0.9rem; color: #94a3b8;">Solution: Use specific ICD-10 codes</p>
+                            </div>
+                            <div class="denial-card">
+                                <div class="denial-code">CO-50</div>
+                                <p style="margin: 0.5rem 0; color: #e2e8f0;">Non-covered service</p>
+                                <p style="font-size: 0.9rem; color: #94a3b8;">Solution: Verify coverage before service</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Appeal Generator -->
+                    <div id="appeals-content" class="billing-content">
+                        <p style="color: #cbd5e1; margin-bottom: 1.5rem;">Generate professional appeal letters for denied claims.</p>
+                        <div class="form-group">
+                            <label>Denial Code/Type</label>
+                            <select id="denial-type">
+                                <option value="">Select denial reason...</option>
+                                <option value="CO-16">CO-16 - Missing Information</option>
+                                <option value="CO-167">CO-167 - Medical Necessity</option>
+                                <option value="CO-50">CO-50 - Non-Covered Service</option>
+                                <option value="CO-29">CO-29 - Timely Filing</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Appeal Context</label>
+                            <textarea id="appeal-context" rows="6" placeholder="Provide claim details, patient info, clinical justification..."></textarea>
+                        </div>
+                        <button class="btn" onclick="generateAppeal()" id="appeal-btn">Generate Appeal Letter</button>
+                        <div id="appeal-results"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 PulseLine Health. All rights reserved.</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="legal-documents/privacy.html" style="color: #60a5fa;">Privacy</a> | 
+                <a href="legal-documents/terms.html" style="color: #60a5fa;">Terms</a> | 
+                <a href="legal-documents/hipaa.html" style="color: #60a5fa;">HIPAA</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function switchPlatform(platform) {
+            document.querySelectorAll('.platform-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.platform-content').forEach(c => c.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById(platform + '-platform').classList.add('active');
+        }
+
+        function switchBillingTab(tab) {
+            document.querySelectorAll('.billing-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.billing-content').forEach(c => c.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById(tab + '-content').classList.add('active');
+        }
+
+        async function generateCodes() {
+            const notes = document.getElementById('medical-notes').value.trim();
+            const btn = document.getElementById('coding-btn');
+            const results = document.getElementById('coding-results');
+            
+            if (!notes) { alert('Please enter clinical notes'); return; }
+            
+            btn.disabled = true;
+            btn.textContent = 'Generating...';
+            results.innerHTML = '<div class="loading"><div class="spinner"></div><p style="margin-top: 1rem; color: #94a3b8;">Generating codes...</p></div>';
+
+            try {
+                const response = await fetch('/groq-api', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ medicalNotes: notes })
+                });
+
+                const data = await response.json();
+                if (data.error) throw new Error(data.error);
+
+                let html = '<div class="result-panel"><h3 style="margin-bottom: 1.5rem; color: #e2e8f0;">Generated Codes</h3>';
+                
+                if (data.icd10_codes && data.icd10_codes.length > 0) {
+                    html += '<h4 style="color: #60a5fa; margin: 1rem 0;">ICD-10 Codes</h4>';
+                    data.icd10_codes.forEach(code => {
+                        html += `<div class="code-item"><div class="code-number">${code.code}</div><p style="color: #e2e8f0;">${code.description}</p></div>`;
+                    });
+                }
+
+                if (data.cpt_codes && data.cpt_codes.length > 0) {
+                    html += '<h4 style="color: #60a5fa; margin: 1rem 0;">CPT Codes</h4>';
+                    data.cpt_codes.forEach(code => {
+                        html += `<div class="code-item"><div class="code-number">${code.code}</div><p style="color: #e2e8f0;">${code.description}</p></div>`;
+                    });
+                }
+
+                html += '</div>';
+                results.innerHTML = html;
+
+            } catch (error) {
+                results.innerHTML = `<div class="result-panel" style="border-left: 4px solid #ef4444;"><p style="color: #ef4444;">Error: ${error.message}</p></div>`;
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Generate Medical Codes';
+            }
+        }
+
+        async function analyzeClaim() {
+            const claimData = document.getElementById('claim-data').value.trim();
+            const btn = document.getElementById('analyze-btn');
+            const results = document.getElementById('analysis-results');
+            
+            if (!claimData) { alert('Please enter claim data'); return; }
+            
+            btn.disabled = true;
+            btn.textContent = 'Analyzing...';
+            results.innerHTML = '<div class="loading"><div class="spinner"></div><p style="margin-top: 1rem; color: #94a3b8;">Analyzing claim...</p></div>';
+
+            try {
+                const response = await fetch('/.netlify/functions/billing-assistant', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'analyze_claim', claimData })
+                });
+
+                const data = await response.json();
+                if (data.error) throw new Error(data.error);
+
+                const result = data.result;
+                let html = `<div class="result-panel">
+                    <h3 style="margin-bottom: 1rem;">Risk Level: <span style="color: ${result.riskLevel === 'high' ? '#ef4444' : result.riskLevel === 'medium' ? '#fbbf24' : '#22c55e'}">${result.riskLevel.toUpperCase()}</span></h3>
+                    <p style="color: #cbd5e1; margin-bottom: 1rem;">Denial Risk Score: ${result.denialRiskScore || 0}%</p>`;
+
+                if (result.issues && result.issues.length > 0) {
+                    html += '<h4 style="margin-top: 1.5rem; color: #e2e8f0;">Issues Found:</h4>';
+                    result.issues.forEach(issue => {
+                        html += `<div class="code-item"><p style="font-weight: 600; text-transform: uppercase; font-size: 0.85rem; color: #94a3b8; margin-bottom: 0.5rem;">${issue.severity}</p>
+                        <p style="color: #e2e8f0; margin-bottom: 0.5rem;">${issue.issue}</p>
+                        <p style="font-size: 0.9rem; color: #60a5fa;"><strong>Fix:</strong> ${issue.recommendation}</p></div>`;
+                    });
+                }
+
+                html += '</div>';
+                results.innerHTML = html;
+
+            } catch (error) {
+                results.innerHTML = `<div class="result-panel" style="border-left: 4px solid #ef4444;"><p style="color: #ef4444;">Error: ${error.message}</p></div>`;
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Analyze Claim';
+            }
+        }
+
+        async function generateAppeal() {
+            const denialType = document.getElementById('denial-type').value;
+            const appealContext = document.getElementById('appeal-context').value.trim();
+            const btn = document.getElementById('appeal-btn');
+            const results = document.getElementById('appeal-results');
+            
+            if (!denialType || !appealContext) { alert('Please fill in all fields'); return; }
+            
+            btn.disabled = true;
+            btn.textContent = 'Generating...';
+            results.innerHTML = '<div class="loading"><div class="spinner"></div><p style="margin-top: 1rem; color: #94a3b8;">Generating appeal letter...</p></div>';
+
+            try {
+                const response = await fetch('/.netlify/functions/billing-assistant', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'generate_appeal', denialType, appealContext })
+                });
+
+                const data = await response.json();
+                if (data.error) throw new Error(data.error);
+
+                results.innerHTML = `<div class="result-panel">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                        <h3 style="color: #e2e8f0;">Appeal Letter</h3>
+                        <button onclick="copyAppeal()" style="background: #60a5fa; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600;">Copy</button>
+                    </div>
+                    <div style="background: rgba(15, 23, 42, 0.6); padding: 1.5rem; border-radius: 8px; white-space: pre-wrap; font-family: 'Courier New', monospace; font-size: 0.9rem; max-height: 500px; overflow-y: auto;" id="appeal-text">${data.result}</div>
+                </div>`;
+
+            } catch (error) {
+                results.innerHTML = `<div class="result-panel" style="border-left: 4px solid #ef4444;"><p style="color: #ef4444;">Error: ${error.message}</p></div>`;
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Generate Appeal Letter';
+            }
+        }
+
+        function copyAppeal() {
+            const text = document.getElementById('appeal-text').textContent;
+            navigator.clipboard.writeText(text).then(() => alert('Copied to clipboard!'));
+        }
+    </script>
+    <script>
+    function handleFileUpload(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const content = e.target.result;
+            document.getElementById("medical-notes").value = content;
+            document.getElementById("file-name").textContent = "✓ File loaded: " + file.name;
+        };
+        reader.readAsText(file);
+    }
+    </script>
+
+</body>
+</html>

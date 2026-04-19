@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>FAQ - PulseLine Health</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%); color: white; min-height: 100vh; }
+        .grid-subtle { background-image: linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px); background-size: 40px 40px; position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.3; pointer-events: none; z-index: 1; }
+        header { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(148, 163, 184, 0.2); padding: 1.5rem 0; position: sticky; top: 0; z-index: 100; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 1rem; }
+        .logo-icon { width: 50px; height: 50px; background: linear-gradient(135deg, #64748b 0%, #475569 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+        .logo-text h1 { font-size: 1.8rem; font-weight: 700; }
+        .logo-text h1 span { color: #94a3b8; }
+        .logo-text p { font-size: 0.75rem; color: #94a3b8; letter-spacing: 1px; }
+        nav ul { display: flex; gap: 2rem; list-style: none; }
+        nav a { color: white; text-decoration: none; font-weight: 500; transition: all 0.3s; padding: 0.5rem 1rem; border-radius: 8px; }
+        nav a:hover { color: #94a3b8; background: rgba(148, 163, 184, 0.1); }
+        nav a.active { background: rgba(100, 116, 139, 0.3); color: #94a3b8; }
+        .page-hero { position: relative; z-index: 10; padding: 4rem 0 2rem; text-align: center; }
+        .page-hero h2 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
+        .page-hero p { font-size: 1.2rem; color: #cbd5e1; }
+        .content-section { position: relative; z-index: 10; padding: 3rem 0; }
+        .faq-container { max-width: 900px; margin: 0 auto; }
+        .faq-category { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; }
+        .faq-category h3 { font-size: 1.5rem; margin-bottom: 1.5rem; color: #94a3b8; padding-bottom: 1rem; border-bottom: 2px solid rgba(148, 163, 184, 0.2); }
+        .faq-item { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(148, 163, 184, 0.1); }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-question { background: none; border: none; color: white; font-size: 1.1rem; font-weight: 600; text-align: left; width: 100%; padding: 1rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s; border-radius: 8px; }
+        .faq-question:hover { background: rgba(148, 163, 184, 0.1); }
+        .faq-question .icon { font-size: 1.5rem; color: #64748b; transition: transform 0.3s; }
+        .faq-question.active .icon { transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 1rem; }
+        .faq-answer.active { max-height: 500px; padding: 1rem; }
+        .faq-answer p { color: #cbd5e1; line-height: 1.8; margin-bottom: 1rem; }
+        footer { position: relative; z-index: 10; background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(20px); border-top: 1px solid rgba(148, 163, 184, 0.2); padding: 3rem 0; margin-top: 4rem; text-align: center; color: #94a3b8; }
+        @media (max-width: 768px) { .page-hero h2 { font-size: 2rem; } }
+    </style>
+</head>
+<body>
+    <div class="grid-subtle"></div>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">⚡</div>
+                    <div class="logo-text">
+                        <h1><a href="/" style="color: white; text-decoration: none;">PulseLine <span>Health</span></a></h1>
+                        <p>MEDICAL BILLING & CODING</p>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="index.html">Platform</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="faq.html" class="active">FAQ</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <p>Find answers about medical billing and coding services</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="faq-container">
+                
+                <div class="faq-category">
+                    <h3>Medical Billing Services</h3>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>How does percentage-based billing work?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>You only pay when we collect payments for you. Our fee is calculated as a percentage of successfully collected revenue (4-9% depending on specialty). If we don't collect, you don't pay.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>What specialties do you serve?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>We serve all medical specialties including Primary Care, Surgery, Radiology, Anesthesiology, Behavioral Health, Emergency Medicine, Physical Therapy, Dermatology, and more. Each specialty has customized billing rates.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>Are there setup fees or long-term contracts?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Setup fees vary by practice size. Many practices have no upfront fees. We offer flexible contract options including month-to-month arrangements. Contact us for a customized quote.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>Do you work with practices in my state?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes, we serve medical practices in all 50 states. Our billing specialists are experienced with state-specific requirements and regional payer variations.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-category">
+                    <h3>Medical Coding Platform</h3>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>How does the coding platform work?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>The platform uses AI to analyze clinical documentation and suggest appropriate medical billing codes (ICD-10, CPT, HCPCS, modifiers). Simply enter notes or upload a document to get comprehensive coding suggestions.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>What file formats can I upload?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>PDF, JPG/JPEG, PNG, and TXT files up to 10MB. The platform processes documents client-side for maximum security.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>Do I need to be a certified coder to use this?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>The platform is designed for healthcare professionals including physicians, nurse practitioners, and certified coders. All code suggestions must be reviewed by qualified personnel before submission to payers.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-category">
+                    <h3>Security & Compliance</h3>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>Is PulseLine Health HIPAA compliant?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes. We use client-side processing (data analyzed in your browser), TLS 1.3 encryption, automated PHI detection, and comprehensive security measures. You must de-identify all PHI before using the platform.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>What data does PulseLine Health store?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>We store only account information (name, email, organization). We do NOT store clinical documentation, medical notes, patient information, or PHI. All clinical processing happens in your browser.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-category">
+                    <h3>Support & Getting Started</h3>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>How do I get support?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Contact us via email at support@pulselinehealth.com, phone at 1-800-PULSE-01, or through our contact form. Business hours: Monday-Friday, 8 AM - 6 PM EST. Billing clients get 24/7 emergency support.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>How do I get started?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>For the coding platform: Visit the Platform page to start immediately (no account needed). For billing services: Contact us for a free consultation and customized quote.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>Is there a free trial?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>The coding platform is available for public use. For billing services, we offer free practice analysis and consultation to demonstrate our value before you commit.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 PulseLine Health. All rights reserved.</p>
+            <p style="margin-top: 0.5rem;">HIPAA Compliant Medical Billing & Coding Services</p>
+            <p style="margin-top: 1rem; font-size: 0.85rem;">
+                <a href="legal-documents/terms.html" style="color: #94a3b8; text-decoration: none; margin: 0 0.5rem;">Terms of Service</a> |
+                <a href="legal-documents/privacy.html" style="color: #94a3b8; text-decoration: none; margin: 0 0.5rem;">Privacy Policy</a> |
+                <a href="legal-documents/hipaa.html" style="color: #94a3b8; text-decoration: none; margin: 0 0.5rem;">HIPAA Compliance</a> |
+                <a href="legal-documents/cookies.html" style="color: #94a3b8; text-decoration: none; margin: 0 0.5rem;">Cookie Policy</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFaq(button) {
+            const answer = button.nextElementSibling;
+            const isActive = answer.classList.contains('active');
+            
+            document.querySelectorAll('.faq-answer').forEach(item => item.classList.remove('active'));
+            document.querySelectorAll('.faq-question').forEach(item => item.classList.remove('active'));
+            
+            if (!isActive) {
+                answer.classList.add('active');
+                button.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

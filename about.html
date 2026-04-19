@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <title>About Us - PulseLine Health</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%); color: white; min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        header { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(148, 163, 184, 0.2); padding: 1.5rem 0; position: sticky; top: 0; z-index: 100; }
+        .logo { display: inline-flex; align-items: center; gap: 1rem; }
+        .logo h1 { font-size: 1.8rem; }
+        .logo span { color: #94a3b8; }
+        nav ul { display: flex; gap: 2rem; list-style: none; float: right; margin-top: -2.5rem; }
+        nav a { color: white; text-decoration: none; padding: 0.5rem 1rem; border-radius: 8px; transition: 0.3s; }
+        nav a:hover { background: rgba(148, 163, 184, 0.1); }
+        .page-hero { padding: 4rem 0 2rem; text-align: center; }
+        .page-hero h2 { font-size: 3rem; font-weight: 800; }
+        .glass-panel { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 16px; padding: 3rem; margin: 2rem 0; }
+        .glass-panel h3 { color: #94a3b8; font-size: 1.8rem; margin-bottom: 1rem; }
+        .glass-panel p { color: #cbd5e1; line-height: 1.8; margin-bottom: 1rem; }
+        .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 2rem 0; }
+        .value-card { background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 12px; padding: 2rem; }
+        .value-card h4 { color: #94a3b8; margin-bottom: 0.5rem; }
+        footer { background: rgba(30, 41, 59, 0.6); border-top: 1px solid rgba(148, 163, 184, 0.2); padding: 3rem 0; margin-top: 4rem; text-align: center; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="/" style="color: white; text-decoration: none;">PulseLine <span>Health</span></a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="index.html">Platform</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <h2>About PulseLine Health</h2>
+            <p style="color: #cbd5e1; font-size: 1.2rem;">Transforming medical billing with AI and expertise</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="glass-panel">
+                <h3>Our Mission</h3>
+                <p>PulseLine Health empowers healthcare providers to maximize revenue and minimize administrative burden through cutting-edge technology and expert billing services.</p>
+                <p>We combine AI-powered medical coding intelligence with professional revenue cycle management to deliver exceptional results for practices of all sizes and specialties.</p>
+            </div>
+
+            <div class="glass-panel">
+                <h3>What We Do</h3>
+                <p><strong>Medical Billing Services:</strong> Complete revenue cycle management with percentage-based pricing (4-9%). We handle everything from claim submission to denial appeals, ensuring maximum collections.</p>
+                <p><strong>AI Coding Platform:</strong> Our proprietary medical coding platform uses advanced AI to generate accurate ICD-10, CPT, and HCPCS codes from clinical documentation, saving time and reducing errors.</p>
+            </div>
+
+            <div class="glass-panel">
+                <h3>Our Values</h3>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <h4>🎯 Results-Driven</h4>
+                        <p style="color: #cbd5e1;">Your success is our success. We're motivated to maximize your collections because our fees are tied to your revenue.</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>🔒 Security First</h4>
+                        <p style="color: #cbd5e1;">HIPAA compliance isn't optional. We employ maximum security measures to protect sensitive health information.</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>🤝 Partnership</h4>
+                        <p style="color: #cbd5e1;">We're not just a vendor—we're your revenue cycle partner. Dedicated account managers ensure personalized service.</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>💡 Innovation</h4>
+                        <p style="color: #cbd5e1;">We continuously invest in AI and automation to deliver faster, more accurate results while reducing costs.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel">
+                <h3>Why Choose PulseLine Health?</h3>
+                <ul style="color: #cbd5e1; margin-left: 2rem; line-height: 2;">
+                    <li>No Collections, No Fees – You only pay when we collect</li>
+                    <li>95%+ Clean Claim Rate – Industry-leading accuracy</li>
+                    <li>Under 30 Days to Payment – Fast cash flow</li>
+                    <li>All 50 States – Nationwide coverage with local expertise</li>
+                    <li>50+ Specialties – Deep knowledge across all medical fields</li>
+                    <li>24/7 Emergency Support – Always available when you need us</li>
+                    <li>AI-Powered Coding – Cutting-edge technology for superior results</li>
+                    <li>Transparent Reporting – Real-time dashboards and monthly analytics</li>
+                </ul>
+            </div>
+
+            <div class="glass-panel">
+                <h3>Our Commitment to Compliance</h3>
+                <p>PulseLine Health is fully HIPAA compliant and employs the highest security standards:</p>
+                <ul style="color: #cbd5e1; margin-left: 2rem; margin-top: 1rem; line-height: 2;">
+                    <li>TLS 1.3 encryption for all data transmission</li>
+                    <li>Client-side processing for sensitive documentation</li>
+                    <li>Automated PHI detection and prevention</li>
+                    <li>Regular security audits and compliance training</li>
+                    <li>Business Associate Agreements (BAA) for all clients</li>
+                    <li>Secure data centers with redundant backups</li>
+                </ul>
+            </div>
+
+            <div class="glass-panel" style="text-align: center;">
+                <h3>Ready to Partner with Us?</h3>
+                <p style="margin-bottom: 2rem;">Let's discuss how PulseLine Health can transform your revenue cycle.</p>
+                <a href="contact.html" style="background: linear-gradient(135deg, #64748b 0%, #475569 100%); color: white; padding: 1rem 2.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; display: inline-block;">Contact Us Today</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 PulseLine Health. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; color: #94a3b8;">HIPAA Compliant Medical Billing & Coding Services</p>
+            <p style="margin-top: 1rem; font-size: 0.85rem;">
+                <a href="legal-documents/terms.html" style="color: #94a3b8; text-decoration: none; margin: 0 0.5rem;">Terms of Service</a> |
+                <a href="legal-documents/privacy.html" style="color: #94a3b8; text-decoration: none; margin: 0 0.5rem;">Privacy Policy</a> |
+                <a href="legal-documents/hipaa.html" style="color: #94a3b8; text-decoration: none; margin: 0 0.5rem;">HIPAA Compliance</a> |
+                <a href="legal-documents/cookies.html" style="color: #94a3b8; text-decoration: none; margin: 0 0.5rem;">Cookie Policy</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Pricing - PulseLine Health Medical Billing Services</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%); color: white; min-height: 100vh; }
+        .grid-subtle { background-image: linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px); background-size: 40px 40px; position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.3; pointer-events: none; z-index: 1; }
+        header { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(148, 163, 184, 0.2); padding: 1.5rem 0; position: sticky; top: 0; z-index: 100; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 1rem; }
+        .logo-icon { width: 50px; height: 50px; background: linear-gradient(135deg, #64748b 0%, #475569 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); }
+        .logo-text h1 { font-size: 1.8rem; font-weight: 700; }
+        .logo-text h1 span { color: #94a3b8; }
+        .logo-text p { font-size: 0.75rem; color: #94a3b8; letter-spacing: 1px; }
+        nav ul { display: flex; gap: 2rem; list-style: none; }
+        nav a { color: white; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: all 0.3s; padding: 0.5rem 1rem; border-radius: 8px; }
+        nav a:hover { color: #94a3b8; background: rgba(148, 163, 184, 0.1); }
+        nav a.active { background: rgba(100, 116, 139, 0.3); color: #94a3b8; border: 1px solid rgba(148, 163, 184, 0.3); }
+        .page-hero { position: relative; z-index: 10; padding: 4rem 0 2rem; text-align: center; }
+        .page-hero h2 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
+        .page-hero p { font-size: 1.2rem; color: #cbd5e1; }
+        .content-section { position: relative; z-index: 10; padding: 3rem 0; }
+        .glass-panel { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 16px; padding: 3rem; margin-bottom: 2rem; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .pricing-card { background: rgba(30, 41, 59, 0.5); border: 2px solid rgba(148, 163, 184, 0.2); border-radius: 12px; padding: 2rem; transition: all 0.3s; }
+        .pricing-card:hover { transform: translateY(-5px); border-color: rgba(148, 163, 184, 0.5); box-shadow: 0 8px 24px rgba(100, 116, 139, 0.3); }
+        .pricing-card h4 { font-size: 1.3rem; margin-bottom: 1rem; color: #94a3b8; }
+        .pricing-card .percentage { font-size: 2.5rem; font-weight: 800; color: white; margin-bottom: 0.5rem; }
+        .pricing-card .description { color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1.5rem; }
+        .pricing-card ul { list-style: none; margin-bottom: 1.5rem; }
+        .pricing-card ul li { padding: 0.5rem 0; color: #cbd5e1; }
+        .pricing-card ul li::before { content: "✓"; color: #64748b; font-weight: bold; margin-right: 0.5rem; }
+        .cta-button { background: linear-gradient(135deg, #64748b 0%, #475569 100%); color: white; padding: 1rem 2rem; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; width: 100%; font-size: 1rem; }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(100, 116, 139, 0.4); }
+        footer { position: relative; z-index: 10; background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(20px); border-top: 1px solid rgba(148, 163, 184, 0.2); padding: 3rem 0; margin-top: 4rem; }
+        .footer-bottom { text-align: center; color: #94a3b8; }
+        @media (max-width: 768px) { .page-hero h2 { font-size: 2rem; } .glass-panel { padding: 2rem; } }
+    </style>
+</head>
+<body>
+    <div class="grid-subtle"></div>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">⚡</div>
+                    <div class="logo-text">
+                        <h1><a href="/" style="color: white; text-decoration: none;">PulseLine <span>Health</span></a></h1>
+                        <p>MEDICAL BILLING SERVICES</p>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="index.html">Platform</a></li>
+                        <li><a href="pricing.html" class="active">Pricing</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <h2>Medical Billing Services Pricing</h2>
+            <p>Transparent percentage-based billing for all specialties</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="glass-panel">
+                <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Specialty-Based Percentage Billing</h3>
+                <p style="color: #cbd5e1; margin-bottom: 2rem;">
+                    PulseLine Health offers competitive percentage-based medical billing services tailored to your specialty. 
+                    You only pay when we collect payments for you.
+                </p>
+
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h4>Primary Care</h4>
+                        <div class="percentage">6-8%</div>
+                        <div class="description">Internal Medicine, Family Medicine, Pediatrics</div>
+                        <ul>
+                            <li>Complete revenue cycle management</li>
+                            <li>Claims submission & follow-up</li>
+                            <li>Denial management & appeals</li>
+                            <li>Patient billing & collections</li>
+                            <li>Monthly performance reports</li>
+                        </ul>
+                        <button class="cta-button" onclick="window.location.href='contact.html'">Get Quote</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h4>Surgical Specialties</h4>
+                        <div class="percentage">7-9%</div>
+                        <div class="description">General Surgery, Orthopedics, Neurosurgery</div>
+                        <ul>
+                            <li>Complex procedure coding</li>
+                            <li>Prior authorization management</li>
+                            <li>Surgical modifier expertise</li>
+                            <li>Hospital billing coordination</li>
+                            <li>Dedicated billing team</li>
+                        </ul>
+                        <button class="cta-button" onclick="window.location.href='contact.html'">Get Quote</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h4>Imaging & Diagnostics</h4>
+                        <div class="percentage">7-9%</div>
+                        <div class="description">Radiology, Cardiology, Pathology</div>
+                        <ul>
+                            <li>Technical & professional billing</li>
+                            <li>Multiple procedure reductions</li>
+                            <li>Imaging center experience</li>
+                            <li>Insurance verification</li>
+                            <li>Real-time eligibility checks</li>
+                        </ul>
+                        <button class="cta-button" onclick="window.location.href='contact.html'">Get Quote</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h4>Behavioral Health</h4>
+                        <div class="percentage">8-10%</div>
+                        <div class="description">Psychiatry, Psychology, Counseling</div>
+                        <ul>
+                            <li>Mental health billing expertise</li>
+                            <li>Telemedicine billing support</li>
+                            <li>Insurance panel management</li>
+                            <li>Patient self-pay collections</li>
+                            <li>HIPAA-compliant processes</li>
+                        </ul>
+                        <button class="cta-button" onclick="window.location.href='contact.html'">Get Quote</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h4>Anesthesiology</h4>
+                        <div class="percentage">8-10%</div>
+                        <div class="description">Anesthesia, Pain Management</div>
+                        <ul>
+                            <li>Time-based & ASA unit coding</li>
+                            <li>Concurrent case billing</li>
+                            <li>Medical direction rules</li>
+                            <li>Hospital contract expertise</li>
+                            <li>Complex modifier application</li>
+                        </ul>
+                        <button class="cta-button" onclick="window.location.href='contact.html'">Get Quote</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h4>Emergency Medicine</h4>
+                        <div class="percentage">7-9%</div>
+                        <div class="description">Emergency Department, Urgent Care</div>
+                        <ul>
+                            <li>High-volume claim processing</li>
+                            <li>E/M level optimization</li>
+                            <li>Critical care billing</li>
+                            <li>Out-of-network collections</li>
+                            <li>24/7 billing support</li>
+                        </ul>
+                        <button class="cta-button" onclick="window.location.href='contact.html'">Get Quote</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h4>Physical Therapy</h4>
+                        <div class="percentage">7-9%</div>
+                        <div class="description">PT, OT, Speech Therapy</div>
+                        <ul>
+                            <li>Therapy unit calculations</li>
+                            <li>Medicare cap management</li>
+                            <li>Progress report documentation</li>
+                            <li>Workers' comp billing</li>
+                            <li>Auto insurance claims</li>
+                        </ul>
+                        <button class="cta-button" onclick="window.location.href='contact.html'">Get Quote</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h4>Dermatology</h4>
+                        <div class="percentage">7-9%</div>
+                        <div class="description">Dermatology, Mohs Surgery</div>
+                        <ul>
+                            <li>Medical vs. cosmetic billing</li>
+                            <li>Mohs surgery coding</li>
+                            <li>Biopsy coordination</li>
+                            <li>Multiple lesion billing</li>
+                            <li>Cosmetic collections</li>
+                        </ul>
+                        <button class="cta-button" onclick="window.location.href='contact.html'">Get Quote</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h4>Laboratory Services</h4>
+                        <div class="percentage">7-9%</div>
+                        <div class="description">Clinical Labs, Reference Labs, Point-of-Care Testing</div>
+                        <ul>
+                            <li>Complex lab code expertise</li>
+                            <li>Panel vs. individual test billing</li>
+                            <li>Medicare LCD compliance</li>
+                            <li>Specimen tracking integration</li>
+                            <li>High-volume processing</li>
+                        </ul>
+                        <button class="cta-button" onclick="window.location.href='contact.html'">Get Quote</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h4>Multi-Specialty Groups</h4>
+                        <div class="percentage">Custom</div>
+                        <div class="description">Large practices with multiple specialties</div>
+                        <ul>
+                            <li>Customized pricing structure</li>
+                            <li>Volume-based discounts</li>
+                            <li>Dedicated account manager</li>
+                            <li>Custom reporting dashboards</li>
+                            <li>Enterprise-level support</li>
+                        </ul>
+                        <button class="cta-button" onclick="window.location.href='contact.html'">Get Custom Quote</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel">
+                <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">What's Included in All Plans</h3>
+                <div class="pricing-grid">
+                    <div style="color: #cbd5e1;">
+                        <h4 style="color: #94a3b8; margin-bottom: 1rem;">Revenue Cycle Services</h4>
+                        <ul style="list-style: none;">
+                            <li style="padding: 0.5rem 0;">✓ Charge entry & claim submission</li>
+                            <li style="padding: 0.5rem 0;">✓ Payment posting & reconciliation</li>
+                            <li style="padding: 0.5rem 0;">✓ Denial management & appeals</li>
+                            <li style="padding: 0.5rem 0;">✓ AR follow-up & collections</li>
+                            <li style="padding: 0.5rem 0;">✓ Patient statement generation</li>
+                        </ul>
+                    </div>
+                    <div style="color: #cbd5e1;">
+                        <h4 style="color: #94a3b8; margin-bottom: 1rem;">Technology & Integration</h4>
+                        <ul style="list-style: none;">
+                            <li style="padding: 0.5rem 0;">✓ EHR system integration</li>
+                            <li style="padding: 0.5rem 0;">✓ Medical coding AI platform</li>
+                            <li style="padding: 0.5rem 0;">✓ Real-time reporting dashboards</li>
+                            <li style="padding: 0.5rem 0;">✓ Patient payment portal</li>
+                            <li style="padding: 0.5rem 0;">✓ Mobile app access</li>
+                        </ul>
+                    </div>
+                    <div style="color: #cbd5e1;">
+                        <h4 style="color: #94a3b8; margin-bottom: 1rem;">Compliance & Support</h4>
+                        <ul style="list-style: none;">
+                            <li style="padding: 0.5rem 0;">✓ HIPAA-compliant operations</li>
+                            <li style="padding: 0.5rem 0;">✓ Coding compliance audits</li>
+                            <li style="padding: 0.5rem 0;">✓ Monthly financial reports</li>
+                            <li style="padding: 0.5rem 0;">✓ KPI performance tracking</li>
+                            <li style="padding: 0.5rem 0;">✓ Dedicated account manager</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel">
+                <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Why Choose Percentage-Based Billing?</h3>
+                <p style="color: #cbd5e1; margin-bottom: 1.5rem;">
+                    Unlike fixed-fee billing services, our percentage-based model aligns our success with yours:
+                </p>
+                <ul style="color: #cbd5e1; margin-left: 2rem;">
+                    <li style="margin-bottom: 1rem;"><strong>No Collections, No Fees:</strong> You only pay when we successfully collect payments</li>
+                    <li style="margin-bottom: 1rem;"><strong>Motivated Performance:</strong> Our revenue is directly tied to maximizing your collections</li>
+                    <li style="margin-bottom: 1rem;"><strong>Predictable Costs:</strong> Percentage-based fees scale with your revenue</li>
+                    <li style="margin-bottom: 1rem;"><strong>No Hidden Fees:</strong> Transparent pricing with no surprise charges</li>
+                    <li style="margin-bottom: 1rem;"><strong>Scalable Solution:</strong> Grows with your practice without renegotiation</li>
+                </ul>
+            </div>
+
+            <div class="glass-panel" style="text-align: center;">
+                <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Ready to Optimize Your Revenue Cycle?</h3>
+                <p style="color: #cbd5e1; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Contact us today for a free practice analysis and customized pricing quote.
+                </p>
+                <button class="cta-button" onclick="window.location.href='contact.html'" style="max-width: 300px; margin: 0 auto;">
+                    Request Custom Quote
+                </button>
+            </div>
+        </div>
+    </section>
+
+        <div class="glass-panel" style="margin-top: 3rem;">
+            <h3 style="margin-bottom: 2rem; text-align: center;">Services by Facility Type</h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                <div class="service-card">
+                    <h4>🏥 Hospitals & Health Systems</h4>
+                    <p class="rate">8-10%</p>
+                    <ul>
+                        <li>Inpatient DRG coding & billing</li>
+                        <li>Emergency department billing</li>
+                        <li>Outpatient services</li>
+                        <li>Complex case management</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h4>🏢 Ambulatory Surgery Centers</h4>
+                    <p class="rate">7-9%</p>
+                    <ul>
+                        <li>Surgical procedure billing</li>
+                        <li>Anesthesia billing</li>
+                        <li>Implant tracking & billing</li>
+                        <li>ASC-specific optimization</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h4>🔬 Clinical Laboratories</h4>
+                    <p class="rate">6-8%</p>
+                    <ul>
+                        <li>Clinical lab test billing</li>
+                        <li>Pathology services billing</li>
+                        <li>Molecular diagnostics</li>
+                        <li>CLIA compliance support</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h4>🏃 Physical Therapy & Rehab</h4>
+                    <p class="rate">6-8%</p>
+                    <ul>
+                        <li>Therapy billing optimization</li>
+                        <li>Medicare Part B compliance</li>
+                        <li>8-minute rule adherence</li>
+                        <li>Functional limitation reporting</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h4>🏠 Home Health Agencies</h4>
+                    <p class="rate">8-10%</p>
+                    <ul>
+                        <li>Episode-based billing (PDGM)</li>
+                        <li>OASIS documentation support</li>
+                        <li>Recertification tracking</li>
+                        <li>Skilled nursing coordination</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h4>💊 DME Suppliers</h4>
+                    <p class="rate">7-9%</p>
+                    <ul>
+                        <li>Equipment rental billing</li>
+                        <li>Certificate of medical necessity</li>
+                        <li>Prior authorization tracking</li>
+                        <li>Proof of delivery management</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h4>📸 Imaging & Diagnostic Centers</h4>
+                    <p class="rate">7-9%</p>
+                    <ul>
+                        <li>Radiology billing</li>
+                        <li>Technical vs professional components</li>
+                        <li>Contrast & supply billing</li>
+                        <li>Multiple procedure discounts</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h4>🚑 Urgent Care Centers</h4>
+                    <p class="rate">7-9%</p>
+                    <ul>
+                        <li>After-hours E/M billing</li>
+                        <li>Laceration repair coding</li>
+                        <li>X-ray & procedure billing</li>
+                        <li>Level of service optimization</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h4>🧠 Behavioral Health</h4>
+                    <p class="rate">7-9%</p>
+                    <ul>
+                        <li>Therapy session billing</li>
+                        <li>Group vs individual coding</li>
+                        <li>Telehealth compliance</li>
+                        <li>Medicare mental health rules</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <style>
+        .service-card {
+            background: rgba(30, 41, 59, 0.5);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(96, 165, 250, 0.2);
+        }
+        .service-card h4 {
+            color: #60a5fa;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .service-card .rate {
+            color: #22c55e;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .service-card ul {
+            list-style: none;
+            padding: 0;
+            color: #cbd5e1;
+        }
+        .service-card li {
+            padding: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+        .service-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #22c55e;
+            font-weight: bold;
+        }
+        </style>
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 PulseLine Health Medical Billing Services. All rights reserved.</p>
+                <p style="margin-top: 0.5rem;">HIPAA Compliant | Serving All 50 States</p>
+                <p style="margin-top: 1rem; font-size: 0.85rem;">
+                    <a href="legal-documents/terms.html" style="color: #94a3b8; text-decoration: none; margin: 0 0.5rem;">Terms of Service</a> |
+                    <a href="legal-documents/privacy.html" style="color: #94a3b8; text-decoration: none; margin: 0 0.5rem;">Privacy Policy</a> |
+                    <a href="legal-documents/hipaa.html" style="color: #94a3b8; text-decoration: none; margin: 0 0.5rem;">HIPAA Compliance</a> |
+                    <a href="legal-documents/cookies.html" style="color: #94a3b8; text-decoration: none; margin: 0 0.5rem;">Cookie Policy</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
